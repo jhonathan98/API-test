@@ -11,7 +11,7 @@ app.use('/api', apiRoutes);
 app.get('/api/test1', async (req, res) => {
     try {
         // Ejemplo de petición a una API externa
-        const response = await axios.get('https://api-colombia.com/api/v1/CountryColombia');
+        const response = await axios.get('https://api-colombia.com/api/v1/Country/Colombia');
         res.json({ 
             message: 'Hola mundo',
             externalData: response.data
