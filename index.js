@@ -17,7 +17,8 @@ app.get('/api/test1', async (req, res) => {
             externalData: response.data
         });
     } catch (error) {
-        res.json({ message: 'Hola mundo' });
+        console.log(error)
+        res.json({ message: 'Hola mundo', error: error.message });
     }
 });
 
