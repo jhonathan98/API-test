@@ -1,14 +1,17 @@
 {
   "name": "api-test",
   "version": "1.0.0",
-  "description": "",
+  "description": "consumir API de paises de colombia",
   "main": "index.js",
   "scripts": {
+    "build": "tsc",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.js",
+    "start1": "node index.js"
+    
   },
   "keywords": [],
-  "author": "",
+  "author": "Jhonathan Cordoba",
   "license": "ISC",
   "dependencies": {
     "axios": "^1.7.9",
