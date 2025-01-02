@@ -17,6 +17,10 @@ app.get('/api/colombia', async (req, res) => {
     }
 });
 
+app.get('/api/', (req, res) => {
+    res.json({ message: 'Bienvenido a la API de Colombia' });
+});
+
 
 app.listen(PORT, () => {
     console.log(`Servidor corriendo en http://localhost:${PORT}`);
