@@ -8,12 +8,16 @@ const PORT = process.env.PORT || 3000; // Puerto por defecto 3000
 app.use(express.json());
 app.use('/api', apiRoutes);
 
-app.get('/api/colombia', async (req, res) => {
+app.get('/api/test1', async (req, res) => {
     try {
-        const response = await axios.get('https://api-colombia.com/api/v1/Country/Colombia');
-        res.json(response.data);
+        // Ejemplo de petición a una API externa
+        const response = await axios.get('https://api-colombia.com/api/v1/CountryColombia');
+        res.json({ 
+            message: 'Hola mundo',
+            externalData: response.data
+        });
     } catch (error) {
-        res.status(500).json({ error: error.message });
+        res.json({ message: 'Hola mundo' });
     }
 });
 
