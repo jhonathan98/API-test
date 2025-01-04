@@ -1,7 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const { getData } = require('../controllers/apiController');
+const { getDataCountries } = require('../controllers/apiController');
 
-router.get('/data', getData);
+router.get('/data/Countries', getDataCountries);
 
 module.exports = router;

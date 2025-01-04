@@ -1,12 +1,12 @@
-const { fetchData } = require('../services/apiService');
+const { fetchDataCountries } = require('../services/apiService');
 
-const getData = async (req, res) => {
+const getDataCountries = async (req, res) => {
     try {
-        const data = await fetchData('/Country/Colombia');
+        const data = await fetchDataCountries('/Country/Colombia');
         res.json(data);
     } catch (error) {
         res.status(500).json({ message: error.message });
     }
 };
 
-module.exports = { getData };
+module.exports = { getDataCountries };

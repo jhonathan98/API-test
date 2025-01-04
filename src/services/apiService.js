@@ -1,6 +1,6 @@
 const apiClient = require('../config/apiConfig');
 
-const fetchData = async (endpoint) => {
+const fetchDataCountries = async (endpoint) => {
     try {
         const response = await apiClient.get(endpoint);
         return response.data;
@@ -9,4 +9,4 @@ const fetchData = async (endpoint) => {
     }
 };
 
-module.exports = { fetchData };
+module.exports = { fetchDataCountries };
