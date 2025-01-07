@@ -25,10 +25,10 @@ const getFile = async (req, res) => {
 
 const uploadFileBucket = async (req, res) => {
     try {
-        await uploadImageFromUrl("https://via.placeholder.com/150/92c952", process.env.AWS_BUCKET, "test1.png");
+        uploadImageFromUrl("https://via.placeholder.com/150/92c952", process.env.AWS_BUCKET, "test1.png");
         console.log("Archivo subido exitosamente");
     } catch (error) {
-        console.log(error);
+        console.log("error en el controller",error);
         res.status(500).json({ message: "error durante la carga del archivo"});
     }
 }
