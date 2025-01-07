@@ -10,6 +10,7 @@ const s3Client = new S3Client({
 });
 
 async function uploadImageFromUrl(url, bucketName, fileName) {
+    console.log("Esta es la URL:",url);
     return new Promise((resolve, reject) => {
         https.get(url, async (response) => {
             if (response.statusCode !== 200) {
