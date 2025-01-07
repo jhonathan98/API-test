@@ -16,7 +16,8 @@ const getFile = async (req, res) => {
         downloadFile("https://via.placeholder.com/150/92c952", './src/files/test1.png');
         console.log('Archivo descargado exitosamente');        
     } catch (error) {
-        res.status(500).json({ message: "error durante la descarga",error:error });
+        console.log(error);
+        res.status(500).json({ message: "error durante la descarga"});
         
     }
 }
