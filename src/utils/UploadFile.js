@@ -33,10 +33,14 @@ async function uploadImageFromUrl(url, bucketName, fileName) {
                     const result = await s3Client.send(command);
                     resolve(result);
                 } catch (error) {
+                    console.log("error al intentar subir",error);
                     reject(error);
                 }
             });
-        }).on('error', reject);
+        }).on('error', (err)=>{
+            console.log("Error del https get: ",err);
+            reject(err);
+        });
     });
 }
 
