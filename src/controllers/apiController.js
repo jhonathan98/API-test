@@ -26,6 +26,7 @@ const getFile = async (req, res) => {
 const uploadFileBucket = async (req, res) => {
     try {
         uploadImageFromUrl("https://via.placeholder.com/150/92c952", process.env.AWS_BUCKET, "test1.png");
+        console.log("Archivo subido exitosamente");
     } catch (error) {
         console.log(error);
         res.status(500).json({ message: "error durante la carga del archivo"});
