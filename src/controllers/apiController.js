@@ -14,7 +14,7 @@ const getDataCountries = async (req, res) => {
 const getFile = async (req, res) => {
     try {
         console.log('Iniciando descarga...');
-        downloadFile("https://via.placeholder.com/150/92c952", './src/files/test1.png');
+        await downloadFile("https://via.placeholder.com/150/92c952", './src/files/test1.png');
         console.log('Archivo descargado exitosamente');        
     } catch (error) {
         console.log(error);
@@ -25,7 +25,7 @@ const getFile = async (req, res) => {
 
 const uploadFileBucket = async (req, res) => {
     try {
-        uploadImageFromUrl("https://via.placeholder.com/150/92c952", process.env.AWS_BUCKET, "test1.png");
+        await uploadImageFromUrl("https://via.placeholder.com/150/92c952", process.env.AWS_BUCKET, "test1.png");
         console.log("Archivo subido exitosamente");
     } catch (error) {
         console.log(error);
