@@ -17,27 +17,31 @@ async function uploadImageFromUrl(url, bucketName, fileName) {
                 reject(new Error(`Error al descargar: ${response.statusCode}`));
                 return;
             }
-
-            let chunks = [];
-            response.on('data', chunk => chunks.push(chunk));
-            response.on('end', async () => {
-                const imageBuffer = Buffer.concat(chunks);
-                
-                try {
-                    const command = new PutObjectCommand({
-                        Bucket: bucketName,
-                        Key: fileName,
-                        Body: imageBuffer,
-                        ContentType: 'image/jpeg'
-                    });
-
-                    const result = await s3Client.send(command);
-                    resolve(result);
-                } catch (error) {
-                    console.log("error al intentar subir",error);
-                    reject(error);
-                }
-            });
+            try {
+                let chunks = [];
+                response.on('data', chunk => chunks.push(chunk));                
+                response.on('end', async () => {
+                    const imageBuffer = Buffer.concat(chunks);
+                    
+                    try {
+                        const command = new PutObjectCommand({
+                            Bucket: bucketName,
+                            Key: fileName,
+                            Body: imageBuffer,
+                            ContentType: 'image/jpeg'
+                        });
+    
+                        const result = await s3Client.send(command);
+                        resolve(result);
+                    } catch (error) {
+                        console.log("error al intentar subir",error);
+                        reject(error);
+                    }
+                });
+            } catch (error) {
+                console.log("error al intentar obtener data del response:",error);
+            }
+            
         }).on('error', (err)=>{
             console.log("Error del https get: ",err);
             reject(err);
