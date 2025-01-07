@@ -26,13 +26,13 @@ function downloadFile(url, outputPath) {
 
             fileStream.on('error', (err) => {
                 // Eliminar el archivo en caso de error
-                fs.unlink(outputPath, () => reject(err));
                 console.log("Error en el fileStrem.on: ",err);
+                fs.unlink(outputPath, () => reject(err));
             });
         }).on('error', (err) => {
             // Eliminar el archivo en caso de error
-            fs.unlink(outputPath, () => reject(err));
             console.log("Error del https get: ",err);
+            fs.unlink(outputPath, () => reject(err));
         });
     });
 }
