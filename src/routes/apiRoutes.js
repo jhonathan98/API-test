@@ -3,6 +3,6 @@ const router = express.Router();
 const { getDataCountries, getFile } = require('../controllers/apiController');
 
 router.get('/data/Countries', getDataCountries);
-router.get('/data/File', getFile);
+router.get('/data/file', getFile);
 
 module.exports = router;
