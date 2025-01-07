@@ -21,17 +21,18 @@ function downloadFile(url, outputPath) {
             fileStream.on('finish', () => {
                 fileStream.close();
                 resolve();
+                console.log('Archivo descargado exitosamente!!!!!!!');
             });
 
             fileStream.on('error', (err) => {
                 // Eliminar el archivo en caso de error
                 fs.unlink(outputPath, () => reject(err));
-                console.log(err);
+                console.log("Error en el fileStrem.on: ",err);
             });
         }).on('error', (err) => {
             // Eliminar el archivo en caso de error
             fs.unlink(outputPath, () => reject(err));
-            console.log(err);
+            console.log("Error del https get: ",err);
         });
     });
 }
