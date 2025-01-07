@@ -13,6 +13,7 @@ async function uploadImageFromUrl(url, bucketName, fileName) {
     return new Promise((resolve, reject) => {
         https.get(url, async (response) => {
             if (response.statusCode !== 200) {
+                console.log("error al descargar",response);
                 reject(new Error(`Error al descargar: ${response.statusCode}`));
                 return;
             }
