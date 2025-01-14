@@ -37,47 +37,47 @@ const uploadFileBucket = async (req, res) => {
 }
 
 const GetAllTiketHubSpot = async (req, res) => {
-    // const hubspot = require('@hubspot/api-client');
+    const hubspot = require('@hubspot/api-client');
 
-    // const hubspotClient = new hubspot.Client({"accessToken":process.env.HUBSPOT_API_KEY});
-    // console.log("hubspotClient",hubspotClient);
-    // const limit = 10;
-    // const after = undefined;
-    // const properties = undefined;
-    // const propertiesWithHistory = undefined;
-    // const associations = undefined;
-    // const archived = false;
+    const hubspotClient = new hubspot.Client({"accessToken":process.env.HUBSPOT_API_KEY});
+    console.log("hubspotClient",hubspotClient);
+    const limit = 10;
+    const after = undefined;
+    const properties = undefined;
+    const propertiesWithHistory = undefined;
+    const associations = undefined;
+    const archived = false;
 
-    // try {
-    // const apiResponse = await hubspotClient.crm.contacts.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
-    // console.log(JSON.stringify(apiResponse, null, 2));
-    // res.json(apiResponse);
-    // } catch (e) {
-    //     e.message === 'HTTP request failed'
-    //     ? console.error(JSON.stringify(e.response, null, 2))
-    //     : console.error(e);
-    //     res.status(500).json({ message: e.message, error: e });
-    // }
     try {
-        const hubspot = require('@hubspot/api-client');
-        const hubspotClient = new hubspot.Client({"apiKey":process.env.HUBSPOT_API_KEY});
-        console.log("hubspot----Client=",hubspotClient);
-        const response = await axios.get(`https://api.hubapi.com/crm/v3/objects/contacts`, {
-            headers: {
-                'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}`, // Requerido para OAuth; reemplazar con `hapikey` para claves API
-                'Content-Type': 'application/json',
-            },
-            params: {
-                limit: 10//, // Número de contactos por página
-                //properties: 'firstname,lastname,email', // Campos a recuperar
-            },
-        });
-        console.log('Contactos obtenidos:', response.data.results);
-        res.json(response.data.results);
-    } catch (error) {
-        console.error('Error al obtener contactos:', error.response?.data || error.message);
-        res.status(500).json({ message: error});
+    const apiResponse = await hubspotClient.crm.contacts.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
+    console.log(JSON.stringify(apiResponse, null, 2));
+    res.json(apiResponse);
+    } catch (e) {
+        e.message === 'HTTP request failed'
+        ? console.error(JSON.stringify(e.response, null, 2))
+        : console.error(e);
+        res.status(500).json({ message: e.message, error: e });
     }
+    // try {
+    //     const hubspot = require('@hubspot/api-client');
+    //     const hubspotClient = new hubspot.Client({"apiKey":process.env.HUBSPOT_API_KEY});
+        
+    //     const response = await axios.get(`https://api.hubapi.com/crm/v3/objects/contacts`, {
+    //         headers: {
+    //             'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}`, // Requerido para OAuth; reemplazar con `hapikey` para claves API
+    //             'Content-Type': 'application/json',
+    //         },
+    //         params: {
+    //             limit: 10//, // Número de contactos por página
+    //             //properties: 'firstname,lastname,email', // Campos a recuperar
+    //         },
+    //     });
+    //     console.log('Contactos obtenidos:', response.data.results);
+    //     res.json(response.data.results);
+    // } catch (error) {
+    //     console.error('Error al obtener contactos:', error.response?.data || error.message);
+    //     res.status(500).json({ message: error, algo:hubspotClient});
+    // }
 }
 
 module.exports = { getDataCountries, getFile, uploadFileBucket,GetAllTiketHubSpot };
