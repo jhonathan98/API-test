@@ -48,7 +48,7 @@ const GetAllTiketHubSpot = async (req, res) => {
     const archived = false;
 
     try {
-    const apiResponse = await hubspotClient.crm.tickets.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
+    const apiResponse = await hubspotClient.crm.contacts.basicApi.getPage(limit, after, properties, propertiesWithHistory, associations, archived);
     console.log(JSON.stringify(apiResponse, null, 2));
     res.json(apiResponse);
     } catch (e) {
