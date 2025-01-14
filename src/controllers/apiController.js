@@ -61,7 +61,7 @@ const GetAllTiketHubSpot = async (req, res) => {
     try {
         const response = await axios.get(`https://api.hubapi.com/crm/v3/objects/contacts`, {
             headers: {
-                Authorization: `Bearer ${process.env.HUBSPOT_API_KEY}`, // Requerido para OAuth; reemplazar con `hapikey` para claves API
+                'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}`, // Requerido para OAuth; reemplazar con `hapikey` para claves API
                 'Content-Type': 'application/json',
             },
             params: {
