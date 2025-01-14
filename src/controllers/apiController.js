@@ -59,6 +59,9 @@ const GetAllTiketHubSpot = async (req, res) => {
     //     res.status(500).json({ message: e.message, error: e });
     // }
     try {
+        const hubspot = require('@hubspot/api-client');
+        const hubspotClient = new hubspot.Client({"apiKey":process.env.HUBSPOT_API_KEY});
+        console.log("hubspot----Client=",hubspotClient);
         const response = await axios.get(`https://api.hubapi.com/crm/v3/objects/contacts`, {
             headers: {
                 'Authorization': `Bearer ${process.env.HUBSPOT_API_KEY}`, // Requerido para OAuth; reemplazar con `hapikey` para claves API
